@@ -90,6 +90,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+    // Autoplay Videos on Scroll
+    const videos = document.querySelectorAll('video');
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.play().catch(e => console.log("Autoplay prevented:", e));
+            } else {
+                entry.target.pause();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    videos.forEach(video => videoObserver.observe(video));
 });
 
 // Lightbox CSS (Injected via JS for simplicity or added to style.css)
