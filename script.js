@@ -1,10 +1,12 @@
-// Initialize AOS (Animate on Scroll)
+// Initialize AOS (Animate on Scroll) - disabled on mobile to prevent overflow
 document.addEventListener('DOMContentLoaded', () => {
+    const isMobile = window.innerWidth <= 768;
     AOS.init({
-        duration: 1000,
+        duration: isMobile ? 0 : 1000,
         easing: 'cubic-bezier(0.165, 0.84, 0.44, 1)',
         once: true,
-        offset: 100
+        offset: isMobile ? 0 : 100,
+        disable: isMobile ? true : false
     });
 
     // Remove Preloader - Fast Loading
