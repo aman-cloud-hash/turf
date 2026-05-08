@@ -152,7 +152,7 @@
 
                     <div class="service-card glass-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-img">
-                            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DEwyY6cT_Gz/" data-instgrm-version="14" style="width:100%; margin:0; border-radius: 24px;"></blockquote>
+                            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DDRJOuAzfrm/" data-instgrm-version="14" style="width:100%; margin:0; border-radius: 24px;"></blockquote>
                             <div class="video-tag">Pro Quality</div>
                         </div>
                         <div class="service-body">
@@ -174,22 +174,22 @@
                     <p>Experience the action-packed moments and premium facilities through our social updates.</p>
                 </div>                
                 <div class="instagram-grid">
-                    <div class="insta-embed" data-aos="zoom-in">
+                    <div class="insta-embed">
                         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DD9cVFitu2C/" data-instgrm-version="14"></blockquote>
                     </div>
-                    <div class="insta-embed" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="insta-embed">
                         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DD1wI6gTpUK/" data-instgrm-version="14"></blockquote>
                     </div>
-                    <div class="insta-embed" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="insta-embed">
                         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DDouvV-tCt_/" data-instgrm-version="14"></blockquote>
                     </div>
-                    <div class="insta-embed" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="insta-embed">
                         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DDYcpSSzgJH/" data-instgrm-version="14"></blockquote>
                     </div>
-                    <div class="insta-embed" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="insta-embed">
                         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DDRJOuAzfrm/" data-instgrm-version="14"></blockquote>
                     </div>
-                    <div class="insta-embed" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="insta-embed">
                         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DDHYo43tLcD/" data-instgrm-version="14"></blockquote>
                     </div>
                 </div>
@@ -200,7 +200,6 @@
             </div>
         </section>
 
-        <script async src="//www.instagram.com/embed.js"></script>
 
         <!-- Booking CTA -->
         <section class="cta-section">
@@ -269,6 +268,25 @@
         </a>
     </div>
 
+    <script async src="//www.instagram.com/embed.js"></script>
+    <script>
+        // Persistent Instagram processing
+        function processInstagram() {
+            if (window.instgrm) {
+                window.instgrm.Embeds.process();
+            }
+        }
+
+        window.addEventListener('load', () => {
+            processInstagram();
+            // Retry a few times to catch slow loads
+            setTimeout(processInstagram, 2000);
+            setTimeout(processInstagram, 5000);
+        });
+
+        // Also process if user scrolls (failsafe)
+        window.addEventListener('scroll', processInstagram, { once: true });
+    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>

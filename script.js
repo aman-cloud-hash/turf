@@ -7,15 +7,22 @@ document.addEventListener('DOMContentLoaded', () => {
         offset: 100
     });
 
-    // Remove Preloader
+    // Remove Preloader - Fast Loading
     const preloader = document.getElementById('preloader');
-    window.addEventListener('load', () => {
-        setTimeout(() => {
+    const hidePreloader = () => {
+        if (preloader) {
             preloader.style.opacity = '0';
             setTimeout(() => {
                 preloader.style.display = 'none';
-            }, 600);
-        }, 1000);
+            }, 300);
+        }
+    };
+
+    // Trigger hide after 1.5s max or on window load (whichever is faster)
+    const loadTimeout = setTimeout(hidePreloader, 1500); 
+    window.addEventListener('load', () => {
+        clearTimeout(loadTimeout);
+        setTimeout(hidePreloader, 100);
     });
 
     // Header Scroll Effect
@@ -31,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Navigation Toggle
     const mobileToggle = document.querySelector('.mobile-nav-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
+
     if (mobileToggle) {
         mobileToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -46,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 const headerOffset = 80;
@@ -57,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
-                
+
                 // Close mobile menu if open
                 if (window.innerWidth <= 992) {
                     navLinks.style.display = 'none';
